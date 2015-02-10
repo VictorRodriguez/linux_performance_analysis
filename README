@@ -1,0 +1,72 @@
+README FOR BUILD KERNEL IN DEBIAN 7
+===============================================================================
+__________
+|Contents|
+|--------|_____________________________________________________________________
+|
+|	+Introduction
+|
+|	+Requirements
+|
+|	+Process
+|
+|	+Notes
+|
+|	+References
+|
+|	+Maitainers
+|
+-------------------------------------------------------------------------------
+
+==============
++Introduction+
+==============
+
+_______________________________________________________________________________
+==============
++Requirements+
+==============
+
+You can read the documentaton in /usr/share/doc/kernel-package/README.gz for
+major information.
+
+-
+
++Process
+
+Hello people, for build the new version of the kernel go to the references[1]
+and read the instructions. 
+
+-First, download the version what you would, the next, sure the file what you
+download is the tarball(an compressed file).
+
+-Second, uncompressed the file whit tar command and locate the file in the
+directory of job.
+
+-Third, For the build the new kernel is nesesary compile with the make file and
+running the make command.
+
+-
+
++Notes
+
++References
+
+[1] https://www.debian.org/releases/etch/hppa/ch08s06.html.en
+
+[2] Love Robert, Linux Kernel Development, 3rd Edition, Ed. Addison-Wesley,
+year 2010.   
+
+_______________________________________________________________________________
+=============
++Mainteiners+
+=============
+
+Current maintainers:
+ * Antulio Jonathan Arturo Lujan Muñoz (Johnny) (jony_cnxxx@hotmail.com)
+ *
+ *
+ *
+ *
+ *
+_______________________________________________________________________________
