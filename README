@@ -14,7 +14,7 @@ __________
 |
 |	+References
 |
-|	+Maitainers
+|	+Maintainers
 |
 -------------------------------------------------------------------------------
 
@@ -27,24 +27,19 @@ _______________________________________________________________________________
 +Requirements+
 ==============
 
-You can read the documentaton in /usr/share/doc/kernel-package/README.gz for
-major information.
+You can read the documentaton located in /usr/share/doc/kernel-package/README.gz for major information.
 
 -
 
 +Process
 
-Hello people, for build the new version of the kernel go to the references[1]
-and read the instructions. 
+Hello people, for build the new version of the kernel, go to the references[1] and read the instructions. 
 
--First, download the version what you would, the next, sure the file what you
-download is the tarball(an compressed file).
+-First, download the version what you would, next, be sure downloaded  file is a tarball(a compressed file format).
 
--Second, uncompressed the file whit tar command and locate the file in the
-directory of job.
+-Second, uncompressed the file with "tar" command and locate the file in the working directory.
 
--Third, For the build the new kernel is nesesary compile with the make file and
-running the make command.
+-Third, to build the new Kernel, is necessary to compile with the makefile using the "make" command.
 
 -
 
@@ -59,7 +54,7 @@ year 2010.
 
 _______________________________________________________________________________
 =============
-+Mainteiners+
++Maintainers+
 =============
 
 Current maintainers:
