@@ -12,6 +12,8 @@ You must have these libraries installed on your system
 - tar
 - wget
 - make
+- gcc
+- binutils
 
 ##Download the linux kernel
 Downlad the kernel version you want to install from the [Kernel](https://www.kernel.org/) main page.
@@ -66,8 +68,8 @@ Modules are parts of the kernel that are loaded on the fly, as they are needed. 
 
 This will copy all the modules to a new directory, "/lib/modules/a.b.c" where a.b.c is the kernel version
 
-##Configure your bootloader
-If your distribution uses **lilo**:
+##Configure your boot loader
+If your distribution uses **lilo(Linux loader is for older distributions)**:
 
 * Edit /etc/lilo.conf, and add these lines... 
 ```
