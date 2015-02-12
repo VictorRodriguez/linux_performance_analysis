@@ -1,0 +1,2322 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>PowerTOP report</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$('#system h2').addClass('hide');
+	$('#system table').addClass('hide');
+	$('#cpuidle h2').addClass('hide');
+	$('#cpuidle table').addClass('hide');
+	$('#cpufreq h2').addClass('hide');
+	$('#cpufreq table').addClass('hide');
+	$('#software h2').addClass('hide');
+	$('#software table').addClass('hide');
+	$('#device h2').addClass('hide');
+	$('#device table').addClass('hide');
+	$('#device p').addClass('hide');
+	$('#tuning h2').addClass('hide');
+	$('#tuning table').addClass('hide');
+
+	$('#top').append('<div class="SystemButton"   onclick="toggleSystem()">System Info</div>');
+	$('#top').append('<div class="SummaryButton"  onclick="toggleSummary()">Summary</div>');
+	$('#top').append('<div class="CpuidleButton"  onclick="toggleCpuidle()">CPU Idle</div>');
+	$('#top').append('<div class="CpufreqButton"  onclick="toggleCpufreq()">CPU Frequency</div>');
+	$('#top').append('<div class="SoftwareButton" onclick="toggleSoftware()">Software info</div>');
+	$('#top').append('<div class="DeviceButton"   onclick="toggleDevice()">Device Info</div>');
+	$('#top').append('<div class="TuningButton"   onclick="toggleTuning()">Tuning</div>');
+	$('#top').append('<div class="AllButton"      onclick="toggleAll()">All</div>');
+	$('#top .SummaryButton').toggleClass('pressed');
+
+    }
+	);
+function toggleDummy() {
+		$('#system table').toggleClass('hide', true);
+		$('#system h2').toggleClass('hide', true);
+		$('#summary table').toggleClass('hide', true);
+		$('#summary h2').toggleClass('hide', true);
+		$('#summary p').toggleClass('hide', true);
+		$('#cpuidle table').toggleClass('hide', true);
+		$('#cpuidle h2').toggleClass('hide', true);
+		$('#cpufreq table').toggleClass('hide', true);
+		$('#cpufreq h2').toggleClass('hide', true);
+		$('#software table').toggleClass('hide', true);
+		$('#software h2').toggleClass('hide', true);
+		$('#device table').toggleClass('hide', true);
+		$('#device h2').toggleClass('hide', true);
+		$('#device p').toggleClass('hide', true);
+		$('#tuning table').toggleClass('hide', true);
+		$('#tuning h2').toggleClass('hide', true);
+		$('#top .SystemButton').toggleClass('pressed', false);
+		$('#top .SummaryButton').toggleClass('pressed', false);
+		$('#top .CpuidleButton').toggleClass('pressed', false);
+		$('#top .CpufreqButton').toggleClass('pressed', false);
+		$('#top .SoftwareButton').toggleClass('pressed', false);
+		$('#top .DeviceButton').toggleClass('pressed', false);
+		$('#top .TuningButton').toggleClass('pressed', false);
+		$('#top .AllButton').toggleClass('pressed', false);
+}
+function toggleSystem() {
+		$('#system table').toggleClass('hide', false);
+		$('#system h2').toggleClass('hide', false);
+		$('#summary table').toggleClass('hide', true);
+		$('#summary h2').toggleClass('hide', true);
+		$('#summary p').toggleClass('hide', true);
+		$('#cpuidle table').toggleClass('hide', true);
+		$('#cpuidle h2').toggleClass('hide', true);
+		$('#cpufreq table').toggleClass('hide', true);
+		$('#cpufreq h2').toggleClass('hide', true);
+		$('#software table').toggleClass('hide', true);
+		$('#software h2').toggleClass('hide', true);
+		$('#device table').toggleClass('hide', true);
+		$('#device h2').toggleClass('hide', true);
+		$('#device p').toggleClass('hide', true);
+		$('#tuning table').toggleClass('hide', true);
+		$('#tuning h2').toggleClass('hide', true);
+		$('#top .SystemButton').toggleClass('pressed', true);
+		$('#top .SummaryButton').toggleClass('pressed', false);
+		$('#top .CpuidleButton').toggleClass('pressed', false);
+		$('#top .CpufreqButton').toggleClass('pressed', false);
+		$('#top .SoftwareButton').toggleClass('pressed', false);
+		$('#top .DeviceButton').toggleClass('pressed', false);
+		$('#top .TuningButton').toggleClass('pressed', false);
+		$('#top .AllButton').toggleClass('pressed', false);
+}
+function toggleSummary() {
+		$('#system table').toggleClass('hide', true);
+		$('#system h2').toggleClass('hide', true);
+		$('#summary table').toggleClass('hide', false);
+		$('#summary h2').toggleClass('hide', false);
+		$('#summary p').toggleClass('hide', false);
+		$('#cpuidle table').toggleClass('hide', true);
+		$('#cpuidle h2').toggleClass('hide', true);
+		$('#cpufreq table').toggleClass('hide', true);
+		$('#cpufreq h2').toggleClass('hide', true);
+		$('#software table').toggleClass('hide', true);
+		$('#software h2').toggleClass('hide', true);
+		$('#device table').toggleClass('hide', true);
+		$('#device h2').toggleClass('hide', true);
+		$('#device p').toggleClass('hide', true);
+		$('#tuning table').toggleClass('hide', true);
+		$('#tuning h2').toggleClass('hide', true);
+		$('#top .SystemButton').toggleClass('pressed', false);
+		$('#top .SummaryButton').toggleClass('pressed', true);
+		$('#top .CpuidleButton').toggleClass('pressed', false);
+		$('#top .CpufreqButton').toggleClass('pressed', false);
+		$('#top .SoftwareButton').toggleClass('pressed', false);
+		$('#top .DeviceButton').toggleClass('pressed', false);
+		$('#top .TuningButton').toggleClass('pressed', false);
+		$('#top .AllButton').toggleClass('pressed', false);
+}
+function toggleCpuidle() {
+		$('#system table').toggleClass('hide', true);
+		$('#system h2').toggleClass('hide', true);
+		$('#summary table').toggleClass('hide', true);
+		$('#summary h2').toggleClass('hide', true);
+		$('#summary p').toggleClass('hide', true);
+		$('#cpuidle table').toggleClass('hide', false);
+		$('#cpuidle h2').toggleClass('hide', false);
+		$('#cpufreq table').toggleClass('hide', true);
+		$('#cpufreq h2').toggleClass('hide', true);
+		$('#software table').toggleClass('hide', true);
+		$('#software h2').toggleClass('hide', true);
+		$('#device table').toggleClass('hide', true);
+		$('#device h2').toggleClass('hide', true);
+		$('#device p').toggleClass('hide', true);
+		$('#tuning table').toggleClass('hide', true);
+		$('#tuning h2').toggleClass('hide', true);
+		$('#top .SystemButton').toggleClass('pressed', false);
+		$('#top .SummaryButton').toggleClass('pressed', false);
+		$('#top .CpuidleButton').toggleClass('pressed', true);
+		$('#top .CpufreqButton').toggleClass('pressed', false);
+		$('#top .SoftwareButton').toggleClass('pressed', false);
+		$('#top .DeviceButton').toggleClass('pressed', false);
+		$('#top .TuningButton').toggleClass('pressed', false);
+		$('#top .AllButton').toggleClass('pressed', false);
+
+}
+function toggleCpufreq() {
+		$('#system table').toggleClass('hide', true);
+		$('#system h2').toggleClass('hide', true);
+		$('#summary table').toggleClass('hide', true);
+		$('#summary h2').toggleClass('hide', true);
+		$('#summary p').toggleClass('hide', true);
+		$('#cpuidle table').toggleClass('hide', true);
+		$('#cpuidle h2').toggleClass('hide', true);
+		$('#cpufreq table').toggleClass('hide', false);
+		$('#cpufreq h2').toggleClass('hide', false);
+		$('#software table').toggleClass('hide', true);
+		$('#software h2').toggleClass('hide', true);
+		$('#device table').toggleClass('hide', true);
+		$('#device h2').toggleClass('hide', true);
+		$('#device p').toggleClass('hide', true);
+		$('#tuning table').toggleClass('hide', true);
+		$('#tuning h2').toggleClass('hide', true);
+		$('#top .SystemButton').toggleClass('pressed', false);
+		$('#top .SummaryButton').toggleClass('pressed', false);
+		$('#top .CpuidleButton').toggleClass('pressed', false);
+		$('#top .CpufreqButton').toggleClass('pressed', true);
+		$('#top .SoftwareButton').toggleClass('pressed', false);
+		$('#top .DeviceButton').toggleClass('pressed', false);
+		$('#top .TuningButton').toggleClass('pressed', false);
+		$('#top .AllButton').toggleClass('pressed', false);
+}
+
+function toggleSoftware() {
+		$('#system table').toggleClass('hide', true);
+		$('#system h2').toggleClass('hide', true);
+		$('#summary table').toggleClass('hide', true);
+		$('#summary h2').toggleClass('hide', true);
+		$('#summary p').toggleClass('hide', true);
+		$('#cpuidle table').toggleClass('hide', true);
+		$('#cpuidle h2').toggleClass('hide', true);
+		$('#cpufreq table').toggleClass('hide', true);
+		$('#cpufreq h2').toggleClass('hide', true);
+		$('#software table').toggleClass('hide', false);
+		$('#software h2').toggleClass('hide', false);
+		$('#device table').toggleClass('hide', true);
+		$('#device h2').toggleClass('hide', true);
+		$('#device p').toggleClass('hide', true);
+		$('#tuning table').toggleClass('hide', true);
+		$('#tuning h2').toggleClass('hide', true);
+		$('#top .SystemButton').toggleClass('pressed', false);
+		$('#top .SummaryButton').toggleClass('pressed', false);
+		$('#top .CpuidleButton').toggleClass('pressed', false);
+		$('#top .CpufreqButton').toggleClass('pressed', false);
+		$('#top .SoftwareButton').toggleClass('pressed', true);
+		$('#top .DeviceButton').toggleClass('pressed', false);
+		$('#top .TuningButton').toggleClass('pressed', false);
+		$('#top .AllButton').toggleClass('pressed', false);
+}
+
+function toggleDevice() {
+		$('#system table').toggleClass('hide', true);
+		$('#system h2').toggleClass('hide', true);
+		$('#summary table').toggleClass('hide', true);
+		$('#summary h2').toggleClass('hide', true);
+		$('#summary p').toggleClass('hide', true);
+		$('#cpuidle table').toggleClass('hide', true);
+		$('#cpuidle h2').toggleClass('hide', true);
+		$('#cpufreq table').toggleClass('hide', true);
+		$('#cpufreq h2').toggleClass('hide', true);
+		$('#software table').toggleClass('hide', true);
+		$('#software h2').toggleClass('hide', true);
+		$('#device table').toggleClass('hide', false);
+		$('#device h2').toggleClass('hide', false);
+		$('#device p').toggleClass('hide', false);
+		$('#tuning table').toggleClass('hide', true);
+		$('#tuning h2').toggleClass('hide', true);
+		$('#top .SystemButton').toggleClass('pressed', false);
+		$('#top .SummaryButton').toggleClass('pressed', false);
+		$('#top .CpuidleButton').toggleClass('pressed', false);
+		$('#top .CpufreqButton').toggleClass('pressed', false);
+		$('#top .SoftwareButton').toggleClass('pressed', false);
+		$('#top .DeviceButton').toggleClass('pressed', true);
+		$('#top .TuningButton').toggleClass('pressed', false);
+		$('#top .AllButton').toggleClass('pressed', false);
+}
+
+function toggleTuning() {
+		$('#system table').toggleClass('hide', true);
+		$('#system h2').toggleClass('hide', true);
+		$('#summary table').toggleClass('hide', true);
+		$('#summary h2').toggleClass('hide', true);
+		$('#summary p').toggleClass('hide', true);
+		$('#cpuidle table').toggleClass('hide', true);
+		$('#cpuidle h2').toggleClass('hide', true);
+		$('#cpufreq table').toggleClass('hide', true);
+		$('#cpufreq h2').toggleClass('hide', true);
+		$('#software table').toggleClass('hide', true);
+		$('#software h2').toggleClass('hide', true);
+		$('#device table').toggleClass('hide', true);
+		$('#device h2').toggleClass('hide', true);
+		$('#device p').toggleClass('hide', true);
+		$('#tuning table').toggleClass('hide', false);
+		$('#tuning h2').toggleClass('hide', false);
+		$('#top .SystemButton').toggleClass('pressed', false);
+		$('#top .SummaryButton').toggleClass('pressed', false);
+		$('#top .CpuidleButton').toggleClass('pressed', false);
+		$('#top .CpufreqButton').toggleClass('pressed', false);
+		$('#top .SoftwareButton').toggleClass('pressed', false);
+		$('#top .DeviceButton').toggleClass('pressed', false);
+		$('#top .TuningButton').toggleClass('pressed', true);
+		$('#top .AllButton').toggleClass('pressed', false);
+}
+function toggleAll() {
+		$('#system table').toggleClass('hide', false);
+		$('#system h2').toggleClass('hide', false);
+		$('#summary table').toggleClass('hide', false);
+		$('#summary h2').toggleClass('hide', false);
+		$('#summary p').toggleClass('hide', false);
+		$('#cpuidle table').toggleClass('hide', false);
+		$('#cpuidle h2').toggleClass('hide', false);
+		$('#cpufreq table').toggleClass('hide', false);
+		$('#cpufreq h2').toggleClass('hide', false);
+		$('#software table').toggleClass('hide', false);
+		$('#software h2').toggleClass('hide', false);
+		$('#device table').toggleClass('hide', false);
+		$('#device h2').toggleClass('hide', false);
+		$('#device p').toggleClass('hide', false);
+		$('#tuning table').toggleClass('hide', false);
+		$('#tuning h2').toggleClass('hide', false);
+		$('#top .SystemButton').toggleClass('pressed', false);
+		$('#top .SummaryButton').toggleClass('pressed', false);
+		$('#top .CpuidleButton').toggleClass('pressed', false);
+		$('#top .CpufreqButton').toggleClass('pressed', false);
+		$('#top .SoftwareButton').toggleClass('pressed', false);
+		$('#top .DeviceButton').toggleClass('pressed', false);
+		$('#top .TuningButton').toggleClass('pressed', false);
+		$('#top .AllButton').toggleClass('pressed', true);
+}
+</script>
+<style type="text/css">
+table
+{
+	background-color: #F8F8F8;
+	color: black;
+}
+
+th
+{
+	text-align: right;
+}
+th.device
+{
+	text-align: left;
+}
+th.process
+{
+	text-align: left;
+}
+
+th.tunable
+{
+	text-align: left;
+}
+
+td.package_odd
+{
+	background-color: #E0ffE0;
+	color: black;
+	text-align: right;
+}
+td.package_even
+{
+	background-color: #F0ffF0;
+	color: black;
+	text-align: right;
+}
+
+td.core_even
+{
+	background-color: #F0ffF0;
+	color: black;
+	text-align: right;
+}
+
+td.core_odd
+{
+	background-color: #E0E0ff;
+	color: black;
+	text-align: right;
+}
+
+td.cpu_even_freq
+{
+	background-color: #E2E2E2;
+	color: black;
+}
+
+td.cpu_odd_freq
+{
+	background-color: #F4f4F4;
+	color: black;
+}
+
+td.cpu_even_even
+{
+	background-color: #E0E0f0;
+	color: black;
+	text-align: right;
+}
+
+td.cpu_even_odd
+{
+	background-color: #F0f0F0;
+	color: black;
+	text-align: right;
+}
+td.cpu_odd_even
+{
+	background-color: #E0E0ff;
+	color: black;
+	text-align: right;
+}
+
+td.cpu_odd_odd
+{
+	background-color: #F0ffF0;
+	color: black;
+	text-align: right;
+}
+
+tr.device_odd
+{
+	background-color: #E0E0E0;
+	color: black;
+}
+tr.device_even
+{
+	background-color: #F0f0F0;
+	color: black;
+}
+
+tr.process_odd
+{
+	background-color: #E0E0E0;
+	color: black;
+}
+tr.process_even
+{
+	background-color: #F0f0F0;
+	color: black;
+}
+
+td.device_power
+{
+	text-align: right;
+}
+
+td.process_power
+{
+	text-align: right;
+}
+
+td.device_util
+{
+	text-align: right;
+}
+
+tr.tunable_odd
+{
+	background-color: #E0E0E0;
+	color: black;
+}
+tr.tunable_even
+{
+	background-color: #F0f0F0;
+	color: black;
+}
+
+tr.tunable_odd_bad
+{
+	background-color: #FFE0E0;
+	color: black;
+}
+tr.tunable_even_bad
+{
+	background-color: #FFf0F0;
+	color: black;
+}
+
+tr.system_odd
+{
+	background-color: #E0E0E0;
+	color: black;
+}
+tr.system_even
+{
+	background-color: #F0f0F0;
+	color: black;
+}
+
+tr.device_odd
+{
+	background-color: #E0E0E0;
+	color: black;
+}
+tr.device_even
+{
+	background-color: #F0f0F0;
+	color: black;
+}
+
+body {
+	background-color: #eee; /* Background color */
+	color: #222;            /* Foreground color used for text */
+	font-family: Helvetica;
+	font-size: 14px;
+	margin: 0;              /* Amount of negative space around the
+                                   outside of the body */
+	padding: 0;             /* Amount of negative space around the
+                                   inside of the body */
+}
+#top h1 {
+	margin: 0;
+	padding: 0;
+}
+#top h1 a {
+	background-color: #ccc;
+	border-bottom: 1px solid #666;
+	color: #222;
+	display: block;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 10px 0;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 0px 1px 1px #fff;
+	background-image: -webkit-gradient(linear, left top, left bottom,
+						from(#ccc), to(#999));
+}
+
+
+#top div {
+	height: 30px;
+	font-weight: bold;
+	text-align: center;
+	color: white;
+	text-shadow: rgba(0,0,0,0.6) 0px -1px 1px;
+	line-height: 28px;
+	border-width:0px 8px 0px 8px;
+}
+#top div.SystemButton {
+	position: absolute;
+	top: 7px;
+	left: 6px;
+}
+#top div.SummaryButton {
+	position: absolute;
+	top: 7px;
+	left: 160px;
+}
+#top div.CpuidleButton {
+	position: absolute;
+	top: 7px;
+	left: 320px;
+}
+#top div.CpufreqButton {
+	position: absolute;
+	top: 7px;
+	left: 480px;
+}
+#top div.SoftwareButton {
+	position: absolute;
+	top: 7px;
+	left: 640px;
+}
+#top div.DeviceButton {
+	position: absolute;
+	top: 7px;
+	left: 800px;
+}
+#top div.TuningButton {
+	position: absolute;
+	top: 7px;
+	left: 960px;
+}
+#top div.AllButton {
+	position: absolute;
+	top: 7px;
+	left: 1120px;
+}
+div.pressed {
+	background-color: #000000;
+	border: 1px solid #000000;
+	color: #000000;
+	display: block;
+	border-width:0px 8px 0px 8px;
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+}
+table.hide {
+	display: none;
+}
+h2.hide {
+	display: none;
+}
+p.hide {
+	display: none
+}
+</style>
+</head>
+
+<body>
+
+<div id='top'>
+<h1><a href='#top'>&nbsp;</a></h1>
+</div>
+
+<div id="system"><h2>System Information</h2>
+<table>
+<tr class="system_even">
+	<td width="20%">PowerTOP Version</td>
+	<td>v2.4</td>
+</tr>
+<tr class="system_odd">
+	<td>Kernel Version</td>
+	<td>Linux version 3.11.10-17-desktop (geeko@buildhost) (gcc version 4.8.1 20130909 [gcc-4_8-branch revision 202388] (SUSE Linux) ) #1 SMP PREEMPT Mon Jun 16 15:28:13 UTC 2014 (fba7c1f)</td>
+</tr>
+<tr class="system_even">
+	<td>System Name</td>
+	<td>Intel Corporation Intel powered classmate PC Clamshell</td>
+</tr>
+<tr class="system_odd">
+	<td>CPU Information</td>
+	<td>2x  Intel(R) Celeron(R) CPU 847 @ 1.10GHz</td>
+</tr>
+<tr class="system_even">
+	<td>OS Information</td>
+	<td>openSUSE 13.1 (Bottle) (x86_64)</td>
+</tr>
+</table>
+
+</div>
+
+<div id="summary"><h2>Power Consumption Summary</h2>
+<p>182,7 wakeups/second, 0,9 GPU ops/second, 0,0 VFS ops/sec, 13,6 GFX wakes/sec and 78,2% CPU use</p>
+<table width="100%">
+<tr>
+	<th width="10%">Usage</th>
+	<th width="10%">Events/s</th>
+	<th width="10%" class="process">Category</th>
+	<th class="process">Description</th>
+</tr>
+<tr class="process_odd">
+	<td class="process_power"> 36,8%</td>
+	<td class="process_power">  0,6</td>
+	<td>Process</td>
+	<td>waitpid10</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">100,0%</td>
+	<td class="process_power"></td>
+	<td>Device</td>
+	<td>Codec de audio hwC0D0: Realtek</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">100,0%</td>
+	<td class="process_power"></td>
+	<td>Device</td>
+	<td>Codec de audio hwC0D3: Intel</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power"> 32,0%</td>
+	<td class="process_power"> 0,00</td>
+	<td>Process</td>
+	<td>perf_event_open</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  0,1%</td>
+	<td class="process_power"> 35,8</td>
+	<td>Timer</td>
+	<td>hrtimer_wakeup</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  0,4%</td>
+	<td class="process_power"> 30,3</td>
+	<td>Process</td>
+	<td>/usr/lib64/firefox/plugin-container /usr/lib64/browser-plugins/libflashplayer.so -greomni /usr/lib64/firefox/omni.ja -appomni /</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  3,1%</td>
+	<td class="process_power"> 14,8</td>
+	<td>Process</td>
+	<td>/usr/java/latest/bin/java -Djdk.home=/usr/java/latest -classpath /home/labsol/netbeans-8.0.2/platform/lib/boot.jar:/home/labsol</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  3,1%</td>
+	<td class="process_power">  8,0</td>
+	<td>Process</td>
+	<td>/usr/lib64/firefox/firefox </td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  0,1%</td>
+	<td class="process_power"> 17,3</td>
+	<td>Interrupt</td>
+	<td>[41] i915</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  0,0%</td>
+	<td class="process_power"> 15,1</td>
+	<td>kWork</td>
+	<td>ieee80211_iface_work</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  0,0%</td>
+	<td class="process_power"> 10,6</td>
+	<td>Process</td>
+	<td>[rcu_preempt]</td>
+</tr>
+</table>
+
+</div>
+
+<div id="cpuidle"><h2>Processor Idle state report</h2>
+<table width="100%">
+<tr>
+	<th width="25%" colspan="2" class="package_header">Package 0</th>
+	<td width="2%">&nbsp;</td>
+	<th width="25%" colspan="2" class="core_header">Core 0</th>
+	<td width="2%">&nbsp;</td>
+	<th colspan="3" class="cpu_header"> CPU 0</th>
+</tr>
+<tr>
+	<td width="10%" class="cpu_odd_freq"></td>
+	<td class="package_odd"></td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq"></td>
+	<td class="core_odd"></td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">C0 activo</td>
+	<td class="cpu_odd_even"> 52,0%</td>
+	<td class="cpu_odd_even">&nbsp;</td>
+</tr>
+<tr>
+	<td width="10%" class="cpu_even_freq"></td>
+	<td class="package_even"></td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq"></td>
+	<td class="core_even"></td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq">POLL</td>
+	<td class="cpu_even_even">  0,0%</td>
+	<td class="cpu_even_even">   0,0 ms</td>
+</tr>
+<tr>
+	<td width="10%" class="cpu_odd_freq"></td>
+	<td class="package_odd"></td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq"></td>
+	<td class="core_odd"></td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">C1E-SNB</td>
+	<td class="cpu_odd_even">  0,0%</td>
+	<td class="cpu_odd_even">   0,1 ms</td>
+</tr>
+<tr>
+	<td width="10%" class="cpu_even_freq">C2 (pc2)</td>
+	<td class="package_even">  0,2%</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq"></td>
+	<td class="core_even"></td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq"></td>
+	<td class="cpu_even_even"></td>
+	<td class="cpu_even_even"></td>
+</tr>
+<tr>
+	<td width="10%" class="cpu_odd_freq">C3 (pc3)</td>
+	<td class="package_odd">  0,2%</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">C3 (cc3)</td>
+	<td class="core_odd">  0,4%</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">C3-SNB</td>
+	<td class="cpu_odd_even">  0,4%</td>
+	<td class="cpu_odd_even">   1,1 ms</td>
+</tr>
+<tr>
+	<td width="10%" class="cpu_even_freq">C6 (pc6)</td>
+	<td class="package_even">  1,1%</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq">C6 (cc6)</td>
+	<td class="core_even">  0,1%</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq">C6-SNB</td>
+	<td class="cpu_even_even">  0,1%</td>
+	<td class="cpu_even_even">   1,4 ms</td>
+</tr>
+<tr>
+	<td width="10%" class="cpu_odd_freq">C7 (pc7)</td>
+	<td class="package_odd">  7,6%</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">C7 (cc7)</td>
+	<td class="core_odd"> 46,0%</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">C7-SNB</td>
+	<td class="cpu_odd_even"> 46,6%</td>
+	<td class="cpu_odd_even">   4,1 ms</td>
+</tr>
+<tr>
+	<th colspan="2" class="package_header">&nbsp;</th>
+	<td width="2%">&nbsp;</td>
+	<th width="25%" colspan="2" class="core_header">Core 1</th>
+	<td width="2%">&nbsp;</td>
+	<th colspan="3" class="cpu_header"> CPU 1</th>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq"></td>
+	<td class="core_odd"></td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">C0 activo</td>
+	<td class="cpu_odd_odd"> 55,8%</td>
+	<td class="cpu_odd_odd">&nbsp;</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq"></td>
+	<td class="core_even"></td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq">POLL</td>
+	<td class="cpu_even_odd">  0,0%</td>
+	<td class="cpu_even_odd">   0,0 ms</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq"></td>
+	<td class="core_odd"></td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">C1E-SNB</td>
+	<td class="cpu_odd_odd">  0,2%</td>
+	<td class="cpu_odd_odd">   2,5 ms</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq"></td>
+	<td class="core_even"></td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq"></td>
+	<td class="cpu_even_odd"></td>
+	<td class="cpu_even_odd"></td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">C3 (cc3)</td>
+	<td class="core_odd">  0,2%</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">C3-SNB</td>
+	<td class="cpu_odd_odd">  0,2%</td>
+	<td class="cpu_odd_odd">   0,7 ms</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq">C6 (cc6)</td>
+	<td class="core_even">  0,0%</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq">C6-SNB</td>
+	<td class="cpu_even_odd">  0,0%</td>
+	<td class="cpu_even_odd">   0,6 ms</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">C7 (cc7)</td>
+	<td class="core_odd"> 43,2%</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">C7-SNB</td>
+	<td class="cpu_odd_odd"> 43,6%</td>
+	<td class="cpu_odd_odd">   6,1 ms</td>
+</tr>
+<tr>
+	<th colspan="2" class="package_header">&nbsp;</th>
+	<td width="2%">&nbsp;</td>
+	<th width="25%" colspan="2" class="core_header">GPU 10911808</th>
+	<td width="2%">&nbsp;</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq"></td>
+	<td class="core_odd"></td>
+	<td width="2%">&nbsp;</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq">Powered On</td>
+	<td class="core_even"> 39,3%</td>
+	<td width="2%">&nbsp;</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">RC6</td>
+	<td class="core_odd"> 60,7%</td>
+	<td width="2%">&nbsp;</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq">RC6p</td>
+	<td class="core_even">  0,0%</td>
+	<td width="2%">&nbsp;</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">RC6pp</td>
+	<td class="core_odd">  0,0%</td>
+	<td width="2%">&nbsp;</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq"></td>
+	<td class="core_even"></td>
+	<td width="2%">&nbsp;</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq"></td>
+	<td class="core_odd"></td>
+	<td width="2%">&nbsp;</td>
+</tr>
+</table>
+
+</div>
+
+<div id="cpufreq"><h2>Processor Frequency Report</h2>
+<table width="100%">
+<tr>
+	<th width="25%" colspan="2" class="package_header">Package 0</th>
+	<td width="2%">&nbsp;</td>
+	<th width="25%" colspan="2" class="core_header">Core 0</th>
+	<td width="2%">&nbsp;</td>
+	<th colspan="2" class="cpu_header"> CPU 0</th>
+</tr>
+<tr>
+	<td width="10%" class="cpu_odd_freq"></td>
+	<td class="package_odd"></td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq"></td>
+	<td class="package_odd"></td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">Actual</td>
+	<td class="cpu_odd_even">  1094 MHz</td>
+</tr>
+<tr>
+	<td width="10%" class="cpu_even_freq">Idle</td>
+	<td class="package_even">  22,1% </td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq">Idle</td>
+	<td class="package_even">  60,6% </td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq">Idle</td>
+	<td class="cpu_even_even">  60,6% </td>
+</tr>
+<tr>
+	<td width="10%" class="cpu_odd_freq">1000 MHz</td>
+	<td class="package_odd">   0,8% </td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq"> 900 MHz</td>
+	<td class="package_odd">   0,4% </td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq"> 900 MHz</td>
+	<td class="cpu_odd_even">   0,4% </td>
+</tr>
+<tr>
+	<td width="10%" class="cpu_even_freq">1100 MHz</td>
+	<td class="package_even">  76,6% </td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq">1100 MHz</td>
+	<td class="package_even">  38,4% </td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq">1100 MHz</td>
+	<td class="cpu_even_even">  38,4% </td>
+</tr>
+<tr>
+	<td width="10%" class="cpu_odd_freq"> 900 MHz</td>
+	<td class="package_odd">   0,5% </td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">1000 MHz</td>
+	<td class="package_odd">   0,6% </td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">1000 MHz</td>
+	<td class="cpu_odd_even">   0,6% </td>
+</tr>
+<tr>
+	<td width="10%" class="cpu_even_freq"> 800 MHz</td>
+	<td class="package_even">   0,0% </td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq"> 800 MHz</td>
+	<td class="package_even">   0,0% </td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq"> 800 MHz</td>
+	<td class="cpu_even_even">   0,0% </td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<th width="25%" colspan="2" class="core_header">Core 1</th>
+	<td width="2%">&nbsp;</td>
+	<th colspan="2" class="cpu_header"> CPU 1</th>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq"></td>
+	<td class="package_even"></td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq">Actual</td>
+	<td class="cpu_even_odd">  1096 MHz</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">Idle</td>
+	<td class="package_odd">  56,2% </td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">Idle</td>
+	<td class="cpu_odd_odd">  56,2% </td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq"> 900 MHz</td>
+	<td class="package_even">   0,1% </td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq"> 900 MHz</td>
+	<td class="cpu_even_odd">   0,1% </td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">1100 MHz</td>
+	<td class="package_odd">  43,3% </td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq">1100 MHz</td>
+	<td class="cpu_odd_odd">  43,3% </td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq">1000 MHz</td>
+	<td class="package_even">   0,3% </td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_even_freq">1000 MHz</td>
+	<td class="cpu_even_odd">   0,3% </td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq"> 800 MHz</td>
+	<td class="package_odd">   0,0% </td>
+	<td width="2%">&nbsp;</td>
+	<td width="10%" class="cpu_odd_freq"> 800 MHz</td>
+	<td class="cpu_odd_odd">   0,0% </td>
+</tr>
+</table>
+
+</div>
+
+<div id="software"><h2>Overview of Software Power Consumers</h2>
+<table width="100%">
+<tr>
+	<th width="10%">Usage</th>
+	<th width="10%">Wakeups/s</th>
+	<th width="10%">GPU ops/s</th>
+	<th width="10%">Disk IO/s</th>
+	<th width="10%">GFX Wakeups/s</th>
+	<th width="10%" class="process">Category</th>
+	<th class="process">Description</th>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">367,5 ms/s</td>
+	<td class="process_power">  0,6</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>waitpid10</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">320,4 ms/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>perf_event_open</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  1,1 ms/s</td>
+	<td class="process_power"> 35,8</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Timer</td>
+	<td>hrtimer_wakeup</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  4,1 ms/s</td>
+	<td class="process_power"> 30,3</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>/usr/lib64/firefox/plugin-container /usr/lib64/browser-plugins/libflashplayer.so -greomni /usr/lib64/firefox/omni.ja -appomni /</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power"> 31,3 ms/s</td>
+	<td class="process_power"> 14,8</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power">  2,6</td>
+	<td>Process</td>
+	<td>/usr/java/latest/bin/java -Djdk.home=/usr/java/latest -classpath /home/labsol/netbeans-8.0.2/platform/lib/boot.jar:/home/labsol</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power"> 31,3 ms/s</td>
+	<td class="process_power">  8,0</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power">  1,2</td>
+	<td>Process</td>
+	<td>/usr/lib64/firefox/firefox </td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  0,8 ms/s</td>
+	<td class="process_power"> 17,3</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Interrupt</td>
+	<td>[41] i915</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">164,5 us/s</td>
+	<td class="process_power"> 15,1</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>ieee80211_iface_work</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">234,1 us/s</td>
+	<td class="process_power"> 10,3</td>
+	<td class="process_power">  0,3</td>
+	<td class="process_power"></td>
+	<td class="process_power">  4,3</td>
+	<td>Process</td>
+	<td>[rcu_preempt]</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power"> 48,1 us/s</td>
+	<td class="process_power"> 10,3</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>cfq_kick_queue</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  1,1 ms/s</td>
+	<td class="process_power">  8,1</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Interrupt</td>
+	<td>[4] block(softirq)</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  2,3 ms/s</td>
+	<td class="process_power">  6,6</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Timer</td>
+	<td>tick_sched_timer</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  5,6 ms/s</td>
+	<td class="process_power">  4,0</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power">  3,5</td>
+	<td>Process</td>
+	<td>kdeinit4: konsole [kdeinit] </td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">699,2 us/s</td>
+	<td class="process_power">  6,7</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Interrupt</td>
+	<td>[6] tasklet(softirq)</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  1,0 ms/s</td>
+	<td class="process_power">  1,8</td>
+	<td class="process_power">  0,6</td>
+	<td class="process_power"></td>
+	<td class="process_power">  1,9</td>
+	<td>Process</td>
+	<td>kwin -session 101c0179173153000140570716000000044890000_1423464971_204695 </td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">270,4 us/s</td>
+	<td class="process_power">  3,3</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Timer</td>
+	<td>intel_pstate_timer_func</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  5,0 ms/s</td>
+	<td class="process_power"> 0,05</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>write02</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">628,0 us/s</td>
+	<td class="process_power">  1,0</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>ltp-pan</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power"> 55,4 us/s</td>
+	<td class="process_power">  1,0</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>flush_to_ldisc</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  1,2 ms/s</td>
+	<td class="process_power">  0,5</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Interrupt</td>
+	<td>[1] timer(softirq)</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  1,7 ms/s</td>
+	<td class="process_power"> 0,25</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>/usr/bin/Xorg -br :0 vt7 -nolisten tcp -auth /var/lib/kdm/AuthFiles/A:0-vj8Chc </td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  8,2 us/s</td>
+	<td class="process_power">  0,6</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>rt2x00link_tuner</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">445,1 us/s</td>
+	<td class="process_power">  0,4</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>/opt/ltp/bin/ltp-pan -e -S -a 2489 -n 2489 -p -f /tmp/ltp-5kwP6fJpea/alltests -l /opt/ltp/results/LTP_RUN_ON-2015_02_09-17h_44m</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  4,3 us/s</td>
+	<td class="process_power">  0,5</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>intel_unpin_work_fn</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">245,2 us/s</td>
+	<td class="process_power">  0,4</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>waitid02</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  1,0 us/s</td>
+	<td class="process_power">  0,4</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>blk_delay_work</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power"> 79,6 us/s</td>
+	<td class="process_power">  0,4</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>cache_reap</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power"> 70,8 us/s</td>
+	<td class="process_power">  0,3</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Timer</td>
+	<td>process_timeout</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  2,2 us/s</td>
+	<td class="process_power"> 0,30</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>mei_timer</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">218,9 us/s</td>
+	<td class="process_power"> 0,20</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>waitpid12</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">215,4 us/s</td>
+	<td class="process_power"> 0,15</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>waitpid11</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power"> 32,5 us/s</td>
+	<td class="process_power"> 0,20</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>bdi_writeback_workfn</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power"> 13,2 us/s</td>
+	<td class="process_power"> 0,20</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>[ksoftirqd/0]</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">206,3 us/s</td>
+	<td class="process_power"> 0,10</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>ieee80211_ba_session_work</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">328,3 us/s</td>
+	<td class="process_power"> 0,05</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>[rcuop/0]</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">421,7 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>powertop --html </td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">114,0 us/s</td>
+	<td class="process_power"> 0,10</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power">  0,0</td>
+	<td>Process</td>
+	<td>kdeinit4: plasma-desktop [kdeinit] </td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  8,8 us/s</td>
+	<td class="process_power"> 0,15</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>/usr/lib/rtkit/rtkit-daemon </td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  4,5 us/s</td>
+	<td class="process_power"> 0,15</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>rt2x00link_agc</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">101,1 us/s</td>
+	<td class="process_power"> 0,10</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>rt2x00link_vcocal</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power"> 94,4 us/s</td>
+	<td class="process_power"> 0,10</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>write05</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">341,5 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Interrupt</td>
+	<td>[40] Controlador SATA</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">203,4 us/s</td>
+	<td class="process_power"> 0,05</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>waitid01</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power"> 61,3 us/s</td>
+	<td class="process_power"> 0,10</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>/usr/sbin/NetworkManager --no-daemon </td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power"> 40,2 us/s</td>
+	<td class="process_power"> 0,10</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>/usr/bin/virtuoso-t +foreground +configfile /tmp/virtuoso_wZ1351.ini +wait </td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">150,0 us/s</td>
+	<td class="process_power"> 0,05</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Interrupt</td>
+	<td>[7] sched(softirq)</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  7,8 us/s</td>
+	<td class="process_power"> 0,10</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>/usr/lib/udisks2/udisksd --no-debug </td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  3,6 us/s</td>
+	<td class="process_power"> 0,10</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>i915_gem_retire_work_handler</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  2,5 us/s</td>
+	<td class="process_power"> 0,10</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>[watchdog/1]</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  1,4 us/s</td>
+	<td class="process_power"> 0,10</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>rfkill_poll</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">213,0 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>waitpid13</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">208,7 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Interrupt</td>
+	<td>[17] 0000:02:00.0</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power"> 81,4 us/s</td>
+	<td class="process_power"> 0,05</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>writev04</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power"> 76,9 us/s</td>
+	<td class="process_power"> 0,05</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>writev03</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power"> 71,4 us/s</td>
+	<td class="process_power"> 0,05</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>[rcuop/1]</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power"> 71,2 us/s</td>
+	<td class="process_power"> 0,05</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>writev05</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power"> 70,1 us/s</td>
+	<td class="process_power"> 0,05</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>write03</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">158,8 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>[kworker/0:1H]</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">143,3 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Interrupt</td>
+	<td>[9] RCU(softirq)</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  5,3 us/s</td>
+	<td class="process_power"> 0,05</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>perf_event_open02 </td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  4,1 us/s</td>
+	<td class="process_power"> 0,05</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>/usr/bin/kactivitymanagerd </td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  3,1 us/s</td>
+	<td class="process_power"> 0,05</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>avahi-daemon: running [linux-rkso.local] </td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  2,7 us/s</td>
+	<td class="process_power"> 0,05</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Timer</td>
+	<td>watchdog_timer_fn</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  2,0 us/s</td>
+	<td class="process_power"> 0,05</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>ioc_release_fn</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  2,0 us/s</td>
+	<td class="process_power"> 0,05</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>/usr/bin/ssh-agent /etc/X11/xinit/xinitrc </td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  0,7 us/s</td>
+	<td class="process_power"> 0,05</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Interrupt</td>
+	<td>[3] net_rx(softirq)</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  0,4 us/s</td>
+	<td class="process_power"> 0,05</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>jump_label_update_timeout</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  0,2 us/s</td>
+	<td class="process_power"> 0,05</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>rtl_task</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">125,4 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>[kworker/u16:0]</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">114,4 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>kdeinit4: dolphin [kdeinit] --icon system-file-manager -captio </td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">100,2 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>writev02</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power"> 92,7 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>[kworker/0:0]</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power"> 86,9 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>writev01</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power"> 71,7 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>write04</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power"> 70,1 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>writev06</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power"> 65,6 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>write01</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power"> 37,5 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>kdeinit4: kded4 [kdeinit] </td>
+</tr>
+<tr class="process_even">
+	<td class="process_power"> 35,2 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Timer</td>
+	<td>i915_hangcheck_elapsed</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power"> 33,1 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Timer</td>
+	<td>delayed_work_timer_fn</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power"> 23,0 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>[kworker/1:0]</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power"> 21,8 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation </td>
+</tr>
+<tr class="process_even">
+	<td class="process_power"> 20,4 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>[kworker/u16:2]</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power"> 19,0 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Timer</td>
+	<td>cfq_idle_slice_timer</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power"> 16,2 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>[migration/0]</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power"> 12,9 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>[migration/1]</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power"> 12,2 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>[jbd2/sda6-8]</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power"> 10,2 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>wq_barrier_func</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  9,8 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Timer</td>
+	<td>clocksource_watchdog</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  9,4 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>vmstat_update</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  5,6 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>/bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session </td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  3,5 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>kdeinit4: krunner [kdeinit] </td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  2,6 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>[fsnotify_mark]</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  2,1 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Interrupt</td>
+	<td>[8] hrtimer(softirq)</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  1,8 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>/usr/sbin/wpa_supplicant -c /etc/wpa_supplicant/wpa_supplicant.conf -u -f /var/log/wpa_supplicant.log </td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  1,6 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Process</td>
+	<td>/usr/sbin/nscd --foreground </td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  1,0 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>kWork</td>
+	<td>check_corruption</td>
+</tr>
+<tr class="process_odd">
+	<td class="process_power">  0,9 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Timer</td>
+	<td>vblank_disable_fn</td>
+</tr>
+<tr class="process_even">
+	<td class="process_power">  0,8 us/s</td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td class="process_power"></td>
+	<td>Timer</td>
+	<td>writeout_period</td>
+</tr>
+</table>
+
+</div>
+
+<div id="device"><h2>Device Power Report</h2>
+<table width="100%">
+<tr>
+	<th width="10%">Usage</th>
+	<th class="device">Device name</th>
+</tr>
+<tr class="device_odd">
+	<td class="device_util"> 78,2%</td>
+	<td>CPU core</td>
+</tr>
+<tr class="device_even">
+	<td class="device_util"> 78,2%</td>
+	<td>CPU misc</td>
+</tr>
+<tr class="device_odd">
+	<td class="device_util">100,0%</td>
+	<td>Codec de audio hwC0D0: Realtek</td>
+</tr>
+<tr class="device_even">
+	<td class="device_util">100,0%</td>
+	<td>Codec de audio hwC0D3: Intel</td>
+</tr>
+<tr class="device_odd">
+	<td class="device_util">  0,9 ops/s</td>
+	<td>GPU core</td>
+</tr>
+<tr class="device_even">
+	<td class="device_util">  0,9 ops/s</td>
+	<td>GPU misc</td>
+</tr>
+<tr class="device_odd">
+	<td class="device_util"> 60,0%</td>
+	<td>Display backlight</td>
+</tr>
+<tr class="device_even">
+	<td class="device_util"> 59,2%</td>
+	<td>Display backlight</td>
+</tr>
+<tr class="device_odd">
+	<td class="device_util">100,0%</td>
+	<td>Dispositivo PCI: Intel Corporation 7 Series Chipset Family 6-port SATA Controller [AHCI mode]</td>
+</tr>
+<tr class="device_even">
+	<td class="device_util">100,0%</td>
+	<td>Dispositivo de radio: rt2800pci</td>
+</tr>
+<tr class="device_odd">
+	<td class="device_util">100,0%</td>
+	<td>Dispositivo PCI: Intel Corporation 2nd Generation Core Processor Family DRAM Controller</td>
+</tr>
+<tr class="device_even">
+	<td class="device_util">100,0%</td>
+	<td>Dispositivo PCI: Intel Corporation 2nd Generation Core Processor Family Integrated Graphics Controller</td>
+</tr>
+<tr class="device_odd">
+	<td class="device_util">100,0%</td>
+	<td>Dispositivo PCI: Intel Corporation 7 Series/C210 Series Chipset Family MEI Controller #1</td>
+</tr>
+<tr class="device_even">
+	<td class="device_util">100,0%</td>
+	<td>Dispositivo PCI: Ralink corp. RT3290 Wireless 802.11n 1T/1R PCIe</td>
+</tr>
+<tr class="device_odd">
+	<td class="device_util">100,0%</td>
+	<td>Dispositivo PCI: Realtek Semiconductor Co., Ltd. RTL8101E/RTL8102E PCI Express Fast Ethernet controller</td>
+</tr>
+<tr class="device_even">
+	<td class="device_util">100,0%</td>
+	<td>Dispositivo PCI: Intel Corporation 7 Series/C210 Series Chipset Family SMBus Controller</td>
+</tr>
+<tr class="device_odd">
+	<td class="device_util">100,0%</td>
+	<td>Dispositivo PCI: Intel Corporation 7 Series Chipset Family LPC Controller</td>
+</tr>
+<tr class="device_even">
+	<td class="device_util">100,0%</td>
+	<td>Dispositivo PCI: Intel Corporation 7 Series/C210 Series Chipset Family USB Enhanced Host Controller #1</td>
+</tr>
+<tr class="device_odd">
+	<td class="device_util">100,0%</td>
+	<td>Dispositivo PCI: Intel Corporation 7 Series/C210 Series Chipset Family PCI Express Root Port 2</td>
+</tr>
+<tr class="device_even">
+	<td class="device_util">100,0%</td>
+	<td>Dispositivo PCI: Intel Corporation 7 Series/C210 Series Chipset Family PCI Express Root Port 1</td>
+</tr>
+<tr class="device_odd">
+	<td class="device_util">100,0%</td>
+	<td>Dispositivo PCI: Intel Corporation 7 Series/C210 Series Chipset Family High Definition Audio Controller</td>
+</tr>
+<tr class="device_even">
+	<td class="device_util">100,0%</td>
+	<td>Dispositivo PCI: Ralink corp. RT3290 Bluetooth</td>
+</tr>
+<tr class="device_odd">
+	<td class="device_util">100,0%</td>
+	<td>Dispositivo PCI: Intel Corporation 7 Series/C210 Series Chipset Family USB Enhanced Host Controller #2</td>
+</tr>
+<tr class="device_even">
+	<td class="device_util">  2,5 pkts/s</td>
+	<td>Interfaz de red: wlp2s0f0 (rt2800pci)</td>
+</tr>
+<tr class="device_odd">
+	<td class="device_util">  0,0 pkts/s</td>
+	<td>Interfaz de red: enp1s0 (r8169)</td>
+</tr>
+<tr class="device_even">
+	<td class="device_util">  0,0%</td>
+	<td>Dispositivo USB: HD Webcam (Bison)</td>
+</tr>
+<tr class="device_odd">
+	<td class="device_util">  0,0%</td>
+	<td>Dispositivo USB: EHCI Host Controller</td>
+</tr>
+<tr class="device_even">
+	<td class="device_util">  0,0%</td>
+	<td>Dispositivo USB: EHCI Host Controller</td>
+</tr>
+<tr class="device_odd">
+	<td class="device_util">  0,0%</td>
+	<td>Dispositivo USB: usb-device-8087-0024</td>
+</tr>
+<tr class="device_even">
+	<td class="device_util">  0,0%</td>
+	<td>Dispositivo USB: usb-device-8087-0024</td>
+</tr>
+</table>
+
+<h2>Process device activity</h2>
+<table width="100%">
+<tr>
+	<th width="40%" class="device">Process</th>
+	<th class="device">Device</th>
+</tr>
+<tr class="device_odd">
+	<td>systemd</td>
+	<td>/dev/autofs</td>
+</tr>
+<tr class="device_even">
+	<td></td>
+	<td>/dev/kmsg</td>
+</tr>
+<tr class="device_odd">
+	<td>systemd-journal</td>
+	<td>/dev/kmsg</td>
+</tr>
+<tr class="device_even">
+	<td></td>
+	<td>/dev/kmsg</td>
+</tr>
+<tr class="device_odd">
+	<td>wpa_supplicant</td>
+	<td>/dev/rfkill</td>
+</tr>
+<tr class="device_even">
+	<td>systemd-logind</td>
+	<td>/dev/input/event2</td>
+</tr>
+<tr class="device_odd">
+	<td></td>
+	<td>/dev/input/event3</td>
+</tr>
+<tr class="device_even">
+	<td></td>
+	<td>/dev/input/event4</td>
+</tr>
+<tr class="device_odd">
+	<td></td>
+	<td>/dev/input/event5</td>
+</tr>
+<tr class="device_even">
+	<td></td>
+	<td>/dev/input/event6</td>
+</tr>
+<tr class="device_odd">
+	<td></td>
+	<td>/dev/input/event7</td>
+</tr>
+<tr class="device_even">
+	<td></td>
+	<td>/dev/input/event8</td>
+</tr>
+<tr class="device_odd">
+	<td>Xorg</td>
+	<td>/dev/dri/card0</td>
+</tr>
+<tr class="device_even">
+	<td></td>
+	<td>/dev/input/event0</td>
+</tr>
+<tr class="device_odd">
+	<td></td>
+	<td>/dev/input/event1</td>
+</tr>
+<tr class="device_even">
+	<td></td>
+	<td>/dev/input/event10</td>
+</tr>
+<tr class="device_odd">
+	<td></td>
+	<td>/dev/input/event3</td>
+</tr>
+<tr class="device_even">
+	<td></td>
+	<td>/dev/input/event4</td>
+</tr>
+<tr class="device_odd">
+	<td></td>
+	<td>/dev/input/event5</td>
+</tr>
+<tr class="device_even">
+	<td></td>
+	<td>/dev/input/event6</td>
+</tr>
+<tr class="device_odd">
+	<td></td>
+	<td>/dev/input/event7</td>
+</tr>
+<tr class="device_even">
+	<td></td>
+	<td>/dev/vga_arbiter</td>
+</tr>
+<tr class="device_odd">
+	<td>bluetoothd</td>
+	<td>/dev/rfkill</td>
+</tr>
+<tr class="device_even">
+	<td>upowerd</td>
+	<td>/dev/cpu_dma_latency</td>
+</tr>
+<tr class="device_odd">
+	<td></td>
+	<td>/dev/input/event2</td>
+</tr>
+<tr class="device_even">
+	<td></td>
+	<td>/dev/network_latency</td>
+</tr>
+<tr class="device_odd">
+	<td>kwin</td>
+	<td>/dev/dri/card0</td>
+</tr>
+<tr class="device_even">
+	<td>pulseaudio</td>
+	<td>/dev/snd/controlC0</td>
+</tr>
+<tr class="device_odd">
+	<td></td>
+	<td>/dev/snd/controlC0</td>
+</tr>
+<tr class="device_even">
+	<td></td>
+	<td>/dev/snd/controlC0</td>
+</tr>
+<tr class="device_odd">
+	<td>java</td>
+	<td>/dev/random</td>
+</tr>
+<tr class="device_even">
+	<td></td>
+	<td>/dev/random</td>
+</tr>
+<tr class="device_odd">
+	<td></td>
+	<td>/dev/random</td>
+</tr>
+<tr class="device_even">
+	<td></td>
+	<td>/dev/random</td>
+</tr>
+<tr class="device_odd">
+	<td></td>
+	<td>/dev/random</td>
+</tr>
+<tr class="device_even">
+	<td>gvfsd-fuse</td>
+	<td>/dev/fuse</td>
+</tr>
+</table>
+
+</div>
+
+<div id="tuning"><h2>Software Settings in need of Tuning</h2>
+<table width="100%">
+<tr>
+	<th class="tunable">Description</th>
+	<th class="tunable">Script</th>
+</tr>
+<tr class="tunable_odd_bad">
+	<td>Tiempo límite de reescritura VM</td>
+	<td>echo '1500' &gt; '/proc/sys/vm/dirty_writeback_centisecs';</td>
+</tr>
+<tr class="tunable_even_bad">
+	<td>Enable SATA link power Managmenet for host0</td>
+	<td>echo 'min_power' &gt; '/sys/class/scsi_host/host0/link_power_management_policy';</td>
+</tr>
+<tr class="tunable_odd_bad">
+	<td>Enable SATA link power Managmenet for host1</td>
+	<td>echo 'min_power' &gt; '/sys/class/scsi_host/host1/link_power_management_policy';</td>
+</tr>
+<tr class="tunable_even_bad">
+	<td>Enable SATA link power Managmenet for host2</td>
+	<td>echo 'min_power' &gt; '/sys/class/scsi_host/host2/link_power_management_policy';</td>
+</tr>
+<tr class="tunable_odd_bad">
+	<td>Enable SATA link power Managmenet for host3</td>
+	<td>echo 'min_power' &gt; '/sys/class/scsi_host/host3/link_power_management_policy';</td>
+</tr>
+<tr class="tunable_even_bad">
+	<td>Habilitar administración de energía del codec de Audio </td>
+	<td>echo '1' &gt; '/sys/module/snd_hda_intel/parameters/power_save';</td>
+</tr>
+<tr class="tunable_odd_bad">
+	<td>Vigilancia NMI se debe apagar</td>
+	<td>echo '0' &gt; '/proc/sys/kernel/nmi_watchdog';</td>
+</tr>
+<tr class="tunable_even_bad">
+	<td>Tiempo de ejecución PM para dispositivo PCI Realtek Semiconductor Co., Ltd. RTL8101E/RTL8102E PCI Express Fast Ethernet controller</td>
+	<td>echo 'auto' &gt; '/sys/bus/pci/devices/0000:01:00.0/power/control';</td>
+</tr>
+<tr class="tunable_odd_bad">
+	<td>Tiempo de ejecución PM para dispositivo PCI Intel Corporation 2nd Generation Core Processor Family DRAM Controller</td>
+	<td>echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:00.0/power/control';</td>
+</tr>
+<tr class="tunable_even_bad">
+	<td>Tiempo de ejecución PM para dispositivo PCI Intel Corporation 2nd Generation Core Processor Family Integrated Graphics Controller</td>
+	<td>echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:02.0/power/control';</td>
+</tr>
+<tr class="tunable_odd_bad">
+	<td>Tiempo de ejecución PM para dispositivo PCI Intel Corporation 7 Series/C210 Series Chipset Family USB Enhanced Host Controller #2</td>
+	<td>echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1a.0/power/control';</td>
+</tr>
+<tr class="tunable_even_bad">
+	<td>Tiempo de ejecución PM para dispositivo PCI Intel Corporation 7 Series/C210 Series Chipset Family High Definition Audio Controller</td>
+	<td>echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1b.0/power/control';</td>
+</tr>
+<tr class="tunable_odd_bad">
+	<td>Tiempo de ejecución PM para dispositivo PCI Ralink corp. RT3290 Bluetooth</td>
+	<td>echo 'auto' &gt; '/sys/bus/pci/devices/0000:02:00.1/power/control';</td>
+</tr>
+<tr class="tunable_even_bad">
+	<td>Tiempo de ejecución PM para dispositivo PCI Intel Corporation 7 Series/C210 Series Chipset Family MEI Controller #1</td>
+	<td>echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:16.0/power/control';</td>
+</tr>
+<tr class="tunable_odd_bad">
+	<td>Tiempo de ejecución PM para dispositivo PCI Intel Corporation 7 Series/C210 Series Chipset Family SMBus Controller</td>
+	<td>echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.3/power/control';</td>
+</tr>
+<tr class="tunable_even_bad">
+	<td>Tiempo de ejecución PM para dispositivo PCI Intel Corporation 7 Series Chipset Family 6-port SATA Controller [AHCI mode]</td>
+	<td>echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.2/power/control';</td>
+</tr>
+<tr class="tunable_odd_bad">
+	<td>Tiempo de ejecución PM para dispositivo PCI Intel Corporation 7 Series Chipset Family LPC Controller</td>
+	<td>echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.0/power/control';</td>
+</tr>
+<tr class="tunable_even_bad">
+	<td>Tiempo de ejecución PM para dispositivo PCI Intel Corporation 7 Series/C210 Series Chipset Family USB Enhanced Host Controller #1</td>
+	<td>echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.0/power/control';</td>
+</tr>
+<tr class="tunable_odd_bad">
+	<td>Tiempo de ejecución PM para dispositivo PCI Intel Corporation 7 Series/C210 Series Chipset Family PCI Express Root Port 1</td>
+	<td>echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1c.0/power/control';</td>
+</tr>
+<tr class="tunable_even_bad">
+	<td>Tiempo de ejecución PM para dispositivo PCI Intel Corporation 7 Series/C210 Series Chipset Family PCI Express Root Port 2</td>
+	<td>echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1c.1/power/control';</td>
+</tr>
+<tr class="tunable_odd_bad">
+	<td>Tiempo de ejecución PM para dispositivo PCI Ralink corp. RT3290 Wireless 802.11n 1T/1R PCIe</td>
+	<td>echo 'auto' &gt; '/sys/bus/pci/devices/0000:02:00.0/power/control';</td>
+</tr>
+<tr class="tunable_even_bad">
+	<td>Estado Wake-on-lan para dispositivo enp1s0</td>
+	<td>ethtool -s enp1s0 wol d;</td>
+</tr>
+</table>
+
+<h2>Optimal Tuned Software Settings</h2>
+<table width="100%">
+<tr>
+	<th class="tunable">Description</th>
+</tr>
+<tr class="tunable_odd">
+	<td>Autosuspender para dispositivo USB HD Webcam [Bison]</td>
+</tr>
+<tr class="tunable_even">
+	<td>Autosuspender para dispositivo USB desconocido 1-1 (8087:0024)</td>
+</tr>
+<tr class="tunable_odd">
+	<td>Autosuspender para dispositivo USB desconocido 2-1 (8087:0024)</td>
+</tr>
+<tr class="tunable_even">
+	<td>Autosuspender para dispositivo USB EHCI Host Controller [usb1]</td>
+</tr>
+<tr class="tunable_odd">
+	<td>Autosuspender para dispositivo USB EHCI Host Controller [usb2]</td>
+</tr>
+<tr class="tunable_even">
+	<td>Estado Wake-on-lan para dispositivo wlp2s0f0</td>
+</tr>
+<tr class="tunable_odd">
+	<td>Usando 'ondemand' cpufreq governor</td>
+</tr>
+</table>
+
+</div>
+
+</body>
+</html>

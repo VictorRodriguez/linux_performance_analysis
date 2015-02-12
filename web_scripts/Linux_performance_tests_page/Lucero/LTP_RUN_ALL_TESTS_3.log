@@ -1,0 +1,24 @@
+Test Start Time: Tue Feb 10 16:41:51 2015
+-----------------------------------------
+Testcase                       Result     Exit Value
+--------                       ------     ----------
+tpm01                          FAIL       1    
+tpm02                          FAIL       1    
+tpm03                          FAIL       1    
+tpm04                          FAIL       1    
+tpm05                          FAIL       1    
+tpm06                          FAIL       1    
+tpmtoken01                     FAIL       1    
+tpmtoken02                     FAIL       1    
+tpmtoken03                     FAIL       1    
+tpmtoken04                     FAIL       1    
+tpmtoken05                     FAIL       1    
+tpm07                          FAIL       1    
+
+-----------------------------------------------
+Total Tests: 12
+Total Skipped Tests: 0
+Total Failures: 12
+Kernel Version: 3.13.0-43-generic
+Machine Architecture: x86_64
+Hostname: lucero-HP-Pavilion-dv5-Notebook-PC 
