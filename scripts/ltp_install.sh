@@ -8,12 +8,12 @@ packageInstalling () {
 
     if [ ! hash $1 2>/dev/null ] ; then
 
-	sudo ./install_bison.sh
+	
 
     
 	# This if will check if the corresponding package were correctly installed
     
-	if [ ! $? ]; then
+	if [ ! sudo ./install_$1.sh ]; then
 
 	    echo *****Installation of $1 failed. Quitting...
 	    exit 1
@@ -33,13 +33,13 @@ echo "*****************************************"
 
 
 # Packages Installing
+packageInstalling make
+
 packageInstalling bison
 
 packageInstalling byacc
 
 packageInstalling flex
-
-packageInstalling make
 
 packageInstalling automake
 
@@ -73,4 +73,3 @@ make all
 sudo make SKIP_IDCHECK=1 install
 
 echo "The installation has been succesfull, try \"runalltest\" script which is located in /opt/ltp directory. Have fun!!!"
-
